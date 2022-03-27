@@ -1,5 +1,4 @@
 from lib2to3.pgen2 import token
-from msilib import schema
 from jose import JWTError, jwt
 from datetime import datetime, timedelta
 from . import schemas, database, models
