@@ -20,8 +20,12 @@ graphene==3.0
 graphql-core==3.1.7
 graphql-relay==3.1.0
 greenlet==1.1.2
+gunicorn==20.1.0
 h11==0.12.0
+httptools==0.4.0
 idna==3.3
+importlib-metadata==4.11.3
+importlib-resources==5.6.0
 itsdangerous==2.0.1
 Jinja2==3.0.3
 Mako==1.2.0
@@ -46,5 +50,7 @@ typing_extensions==4.0.1
 ujson==5.1.0
 urllib3==1.26.8
 uvicorn==0.15.0
+uvloop==0.16.0
 watchgod==0.7
 websockets==10.1
+zipp==3.7.0
