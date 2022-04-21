@@ -32,7 +32,7 @@ def create_posts(post: schemas.PostCreate, db: Session = Depends(get_db), curren
     # cursor.execute("""INSERT INTO posts (title, content, published) VALUES(%s, %s, %s) RETURNING * """, (post.title, post.content, post.published))
     # new_post = cursor.fetchone()
     # conn.commit()
-
+    print("fayna drerrieee --------------- ik ben een create_post")
     print(current_user.id)
     new_post = models.Post(owner_id = current_user.id, **post.dict())
     db.add(new_post)
@@ -62,14 +62,20 @@ def delete_post(id: int, db: Session = Depends(get_db), current_user: int = Depe
     # cursor.execute("""DELETE FROM posts where id = %s RETURNING*""", (str(id),))
     # deleted_post = cursor.fetchone()
     # conn.commit()
+
     
     post = db.query(models.Post).filter(models.Post.id == id)
-
-
-    if post.first() == None:
-        raise HTTPException(status_code= status.HTTP_404_NOT_FOUND, detail= f"post with {id} was not found")
     
-    if post.owner_id != current_user.id:
+    requested_post = post.first()
+
+    print("word ik uitgevoerd: ")
+    print(requested_post)
+
+
+    if requested_post == None:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail= f"post with {id} was not found")
+    
+    if requested_post.owner_id != current_user.id:
         raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Not autohrized to perform requested action")
 
     post.delete(synchronize_session=False)
