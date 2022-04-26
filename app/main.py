@@ -29,7 +29,7 @@ app.include_router(vote.router)
 
 @app.get("/")
 def root():
-    return {"message": "SUCCESFULLY DEPLOYED FROM OUR CI/CD PIPELINE "}
+    return {"message": "SUCCESFULLY DEPLOYED FROM OUR CI/CD PIPELINE, SPIPAH IS JOINING AS WELL"}
 
 
 
